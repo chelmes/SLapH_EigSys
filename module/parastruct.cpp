@@ -8,9 +8,9 @@ void IO::set_values(const char* infile) {
   std::string value;
   
   //three map class instances for int double and const char
-  std::map <std::string, std::string> names;
-  std::map <std::string, int> integers;
-  std::map <std::string, double> floatings;
+  std::map <std::string, std::string> path;
+  std::map <std::string, int> integer;
+  std::map <std::string, double> floating;
 
   //stream for config file
   std::fstream config;
@@ -26,53 +26,53 @@ void IO::set_values(const char* infile) {
 
         //String valued map variables
         if (keyword == "config_path") {
-          names["config_path"] = value;
+          path["config_path"] = value;
         }
         if (keyword == "result_path") {
-          names["result_path"] = value;
+          path["result_path"] = value;
         }
 
         //Integer valued map variables
         if (keyword == "LT" ) {
-          integers["LT"] = atoi(value.c_str());
+          integer["LT"] = atoi(value.c_str());
         }
         if (keyword == "LX" ) {
-          integers["LX"] = atoi(value.c_str());
+          integer["LX"] = atoi(value.c_str());
         }
         if (keyword == "NEV") {
-          integers["NEV"] = atoi(value.c_str());
+          integer["NEV"] = atoi(value.c_str());
         }
         if (keyword == "iter") {
-          integers["iter"] = atoi(value.c_str());
+          integer["iter"] = atoi(value.c_str());
         }
 
         //floating point valued map variables
         if (keyword == "alpha_1") {
-          floatings["alpha_1"] = atof(value.c_str());
+          floating["alpha_1"] = atof(value.c_str());
         }
         if (keyword == "alpha_2") {
-          floatings["alpha_2"] = atof(value.c_str());
+          floating["alpha_2"] = atof(value.c_str());
         }
         if (keyword == "LAM_L") {
-          floatings["LAM_L"] = atof(value.c_str());
+          floating["LAM_L"] = atof(value.c_str());
         }
         if (keyword == "LAM_C") {
-          floatings["LAM_C"] = atof(value.c_str());
+          floating["LAM_C"] = atof(value.c_str());
         }
     }
   }
   config.close();
 
   //set the values
-  config_path = names["config_path"];
-  result_path = names["result_path"];
+  config_path = path["config_path"];
+  result_path = path["result_path"];
 
-  LT = integers["LT"];
-  LX = integers["LX"];
+  LT = integer["LT"];
+  LX = integer["LX"];
   LY=LX;
   LZ=LX;
   
-  NEV = integers["NEV"];
+  NEV = integer["NEV"];
   NCOL = 3;
   NDIR = 4;
   V3 = LX*LY*LZ;
@@ -80,12 +80,12 @@ void IO::set_values(const char* infile) {
   V_TS = LX*LY*LZ*NDIR*NCOL*NCOL*2; //2 is for complex
   V4_LIME = V_TS * LT;
   
-  iter = integers["iter"];
-  alpha_1 = floatings["alpha_1"];
-  alpha_2 = floatings["alpha_2"];
+  iter = integer["iter"];
+  alpha_1 = floating["alpha_1"];
+  alpha_2 = floating["alpha_2"];
 
-  LAM_L = floatings["LAM_L"];
-  LAM_C = floatings["LAM_C"];
+  LAM_L = floating["LAM_L"];
+  LAM_C = floating["LAM_C"];
 
 }
 
@@ -100,7 +100,7 @@ void IO::print_summary() {
   std::cout << "Results are stored in:                             " << result_path << std::endl;
 }
 
-int IO::get_int_mbr(std::string spec) {
+int IO::get_int(std::string spec) {
   if (spec == "LT") {
     return LT;
   }
@@ -140,7 +140,7 @@ int IO::get_int_mbr(std::string spec) {
 
 }
 
-double IO::get_float_mbr(std::string spec) {
+double IO::get_float(std::string spec) {
   if (spec == "alpha_1") {
     return alpha_1;
   }
