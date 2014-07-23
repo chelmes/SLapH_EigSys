@@ -1,0 +1,66 @@
+#include <complex>
+#include <cstdlib>
+#include <cstdio>
+#include <fstream>
+#include <iostream>
+#include <vector>
+#include <Eigen/Eigen>
+
+//#include "eigen_io"
+
+//Class handling Eigensystems
+
+class Eigensystem {
+  class EigenIo {
+    //Member types
+    private:
+    protected:
+      //Reading functions for 
+      //Read in Eigenvectors from one Timeslice in binary format to V
+      void read_eig_sys_bin(const char* prefix, const int config_i, const int t, Eigen::MatrixXcd &eig_sys);
+
+      void read_eig_vals_bin(const char* prefix, const int config_i, const int t,
+          const int nb_ev);
+
+      //void read_gauge_config();
+
+      //Writing functions for Eigensystems
+      void write_eig_sys_bin(const char* prefix, const int config_i, const int t,
+          const int nb_ev);
+
+      void write_eig_vals_bin(const char* prefix, const int config_i, const int t,
+          const int nb_ev);
+
+  };
+  //Member types
+  private:
+  std::vector<double> eig_vals;
+  Eigen::VectorXcd eig_vec;
+  Eigen::Matrix3cd* ts;
+  Eigen::MatrixXcd eig_sys;
+
+  //Default Constructor for a 24^3 eigensystem with 120 eigenvectors
+  Eigensystem () {};
+
+  public:
+
+  //Constructors
+
+  //Advanced constructor for eigensystem initializing Timeslice of one
+  //configuration with spatial volume dim_vol and LapH dimension dim_eig.
+  Eigensystem (const int, const int);
+
+  //Get information of instance
+  void status (void);
+  void read(const char* prefix, const int config, const int t);
+  //Smearing timeslice with hypercubic blocking parameters determine
+  //inner staple weight alpha1, outer staple weight alpha2 and
+  //number of iterations iter
+  void smear_timeslice(const double, const double, const double);
+
+  //recover eigenvalues from Chebyshev acceleration
+  //WHICH PARAMETERS???
+  //recover_spec();
+
+};
+

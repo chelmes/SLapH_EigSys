@@ -1,0 +1,37 @@
+#ifndef _EIGEN_IO_H_
+#define _EIGEN_IO_H_
+
+#include <complex>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+
+#include <Eigen/Eigen>
+
+
+class EigenIo {
+ //Member types
+  private:
+  protected:
+  public:
+    EigenIo(const int vol3d, const int n_eig_vecs) : Mutter(vol3d, n_eig_vecs){};
+  //Reading functions for 
+  //Read in Eigenvectors from one Timeslice in binary format to V
+    void read_eig_sys_bin(const char* prefix, const int config_i, const int t,
+      const int nb_ev, const int v3);
+
+    void read_eig_vals_bin(const char* prefix, const int config_i, const int t,
+      const int nb_ev, EigenIo::eig_vals&);
+
+    //void read_gauge_config();
+
+  //Writing functions for Eigensystems
+    void write_eig_sys_bin(const char* prefix, const int config_i, const int t,
+      const int nb_ev, EigenIo::eig_sys&);
+
+    void write_eig_vals_bin(const char* prefix, const int config_i, const int t,
+      const int nb_ev, EigenIo::eig_vals&);
+
+
+}
+#endif//_EIGEN_IO_H
