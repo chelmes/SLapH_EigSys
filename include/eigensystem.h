@@ -12,11 +12,11 @@
 
 class Eigensystem {
   private:
-  std::vector<double> eig_vals;
+  std::vector <double> eig_vals;
   Eigen::VectorXcd eig_vec;
   Eigen::Matrix3cd* ts;
   Eigen::MatrixXcd eig_sys;
-
+  std::vector <double> phases;
   //Default Constructor for a 24^3 eigensystem with 120 eigenvectors
   Eigensystem () {};
 
@@ -30,5 +30,6 @@ class Eigensystem {
   Eigensystem (const int, const int);
 
   //Get information of instance
+  void status();
 };
 
