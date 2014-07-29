@@ -6,6 +6,10 @@ EigenIo::EigenIo(const int v3, const int nev) {
 }
 
 /*********************************** Read and Write ***************************************/
+
+//Get timeslice from configuration
+
+
 //construct filename
 void name (const char* prefix, const int config, const int time) {
 }
