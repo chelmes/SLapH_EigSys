@@ -10,7 +10,7 @@
 
 #include <Eigen/Eigen>
 
-#include "variables.h"
+#include "par_io.h"
 class EigenIo {
  //Member types
   private:
