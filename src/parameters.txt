@@ -6,10 +6,10 @@ config_path = /hiskp2/gauges/.../
 result_path = /hiskp2/eigensystems/.../
 #
 # Lattice Extent
-LT = 64
+LT = 4
 # usually the lattices are equally extending in all spatial directions.
 # Therefore one spatial extent is enough
-LX = 32
+LX = 4
 #
 # Number of eigenvectors to calculate
 NEV = 660
