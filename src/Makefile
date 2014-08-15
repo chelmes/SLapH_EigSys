@@ -16,12 +16,21 @@ all: rmxeq mkdep mkxeq
 .PHONY: all
 
 # main programs and modules to be compiled
+<<<<<<< HEAD
 #-include ${SLEPC_DIR}/conf/slepc_common
 #-include ${PETSC_DIR}/conf/petscvariables
 
 MAIN = ev_ts
 
 GENERAL = config_utils eigensystem io io_utils parastruct read_write recover_spec shell_matop sourceshape statistics 
+=======
+#include ${SLEPC_DIR}/conf/slepc_common
+#include ${PETSC_DIR}/conf/petscvariables
+
+MAIN = params
+
+GENERAL =  par_io navigation
+>>>>>>> d6614ee29eed2cf234d7a723ee1c39c7063dbdb5
 MODULES = $(GENERAL)
 
 # search path for modules
@@ -33,6 +42,7 @@ LOGOPTION =
 
 # additional include directories
 # PETSc and SLEPc include paths
+<<<<<<< HEAD
 SLEPC_INCLUDE = /hiskp2/helmes/programm_libs/slepc-3.4.2/arch-linux2-cxx-opt/include \
 		/hiskp2/helmes/programm_libs/slepc-3.4.2/include \
 		/hiskp2/helmes/programm_libs/slepc-3.4.2
@@ -56,6 +66,33 @@ LIBPATH = /hiskp2/helmes/programm_libs/lime-1.3.2/lib  /usr/lib/lapack /usr/lib/
 
 # scheduling and optimization options
 CFLAGS = -std=c++0x -DEIGEN_DONT_PARALLELIZE -O2
+=======
+# SLEPC_INCLUDE = ${SLEPC_DIR} \
+		${SLEPC_DIR}/include \
+		${SLEPC_DIR}/${PETSC_ARCH}/include \
+		
+# PETSC_INCLUDE = ${PETSC_DIR} \
+		${PETSC_DIR}/include \
+		${PETSC_DIR}/${PETSC_ARCH}/include \
+		${PETSC_DIR}/${PETSC_ARCH}/include/mpiuni
+
+INCPATH = ../include $(PETSC_INCLUDE) $(SLEPC_INCLUDE) /usr/local/include /hiskp2/helmes/programm_libs/lime-1.3.2/include \
+	  /hiskp2/helmes/programm_libs/eigen-3.2.0 
+
+# additional libraries
+#LIBS = lime opa mpl pthread rdmacm ibverbs ibumad rt gfortran slepc petsc lapack blas pthread m gfortran m quadmath m stdc++ dl 
+LIBS = m lime 
+
+#SLEPC_LIBPATH = ${SLEPC_DIR}/${PETSC_ARCH}/lib
+#PETSC_LIBPATH = ${PETSC_DIR}/${PETSC_ARCH}/lib
+
+LIBPATH = $(PETSC_LIBPATH) $(SLEPC_LIBPATH) /hiskp2/helmes/programm_libs/lime-1.3.2/lib  /usr/lib/lapack /usr/lib/libblas  \
+	  /usr/lib/gcc/x86_64-linux-gnu/4.6 /usr/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu 
+
+
+# scheduling and optimization options
+CFLAGS = -Wall -pedantic -std=c++0x -O2
+>>>>>>> d6614ee29eed2cf234d7a723ee1c39c7063dbdb5
 
 ############################## do not change ###################################
 
@@ -77,14 +114,22 @@ $(addsuffix .d,$(PGMS)): %.d: %.cpp Makefile
 # rule to compile source programs
 
 $(addsuffix .o,$(PGMS)): %.o: %.cpp Makefile
+<<<<<<< HEAD
 	$(CC) $< -c $(CFLAGS) $(LOGOPTION) $(addprefix -I,$(INCPATH)) -static
+=======
+	$(CC) $< -c $(CFLAGS) $(LOGOPTION) $(addprefix -I,$(INCPATH))
+>>>>>>> d6614ee29eed2cf234d7a723ee1c39c7063dbdb5
 
 
 # rule to link object files
 
 $(MAIN): %: %.o $(addsuffix .o,$(MODULES)) Makefile
 	$(CLINKER) $< $(addsuffix .o,$(MODULES)) $(CFLAGS) $(LOGOPTION) \
+<<<<<<< HEAD
 	   -static $(addprefix -L,$(LIBPATH)) $(addprefix -l,$(LIBS)) -lm -o $@
+=======
+	    $(addprefix -L,$(LIBPATH)) $(addprefix -l,$(LIBS)) -lm -o $@
+>>>>>>> d6614ee29eed2cf234d7a723ee1c39c7063dbdb5
 
 # produce executables
 
