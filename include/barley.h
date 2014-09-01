@@ -1,3 +1,5 @@
+#ifndef _BARLEY_H_
+#define _BARLEY_H_
 class Element {
 
   public:
@@ -6,3 +8,4 @@ class Element {
   protected:
     Element();
 }
+#endif //_BARLEY_H_

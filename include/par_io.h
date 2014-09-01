@@ -1,10 +1,12 @@
+#ifndef _PAR_IO_H_
+#define _PAR_IO_H_
+
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <string>
-#ifndef _PAR_IO_H_
-#define _PAR_IO_H_
+
 //Class handling parameter passing to eigensystem calculation. Implemented as a singleton class with only one global instance
 class IO {
   private:

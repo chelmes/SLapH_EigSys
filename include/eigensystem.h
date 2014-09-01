@@ -1,3 +1,6 @@
+#ifndef _EIGENSYSTEM_H_
+#define _EIGENSYSTEM_H_
+
 #include <complex>
 #include <cstdlib>
 #include <cstdio>
@@ -33,3 +36,4 @@ class Eigensystem {
   void status();
 };
 
+#endif //_EIGENSYSTEM_H_

@@ -1,3 +1,5 @@
+#ifndef _PARASTRUCT_H_
+#define _PARASTRUCT_H_
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -60,4 +62,4 @@ class IO {
     //get path to configs or destination
     std::string get_path(std::string);
 };
-
+#endif //_PARASTRUCT_H_

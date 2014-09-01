@@ -1,4 +1,9 @@
+//Header File holding the Eigensystem 
+#ifndef _MASH_H_
+#define _MASH_H_
+
 #include <boos/multi_array.hpp>
+#include <Eigen/Eigen/unsupported>
 
 typedef boost::multiarray<Eigen::Matrix3cd,2> timeslice;
 
@@ -19,3 +24,4 @@ class Eigensystem {
     void map(GaugeField* config);
     
 }
+#endif //_MASH_H_

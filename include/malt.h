@@ -1,3 +1,7 @@
+// Class handling the calculation of eigensystems 
+#ifndef _MALT_H_
+#define _MALT_H_
+
 class EigSysCalc {
   public:
     virtual ~EigSysCalc();
@@ -13,3 +17,5 @@ class Component {
     virtual ~Component();
     virtual void accept(Visitor&) = 0;
 }
+
+#endif //_MALT_H_

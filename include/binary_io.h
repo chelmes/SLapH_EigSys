@@ -1,3 +1,5 @@
+#ifndef _BIN_IO_H_
+#define _BIN_IO_H_
 //everything that can be written and read goes here
 class bin_io {
   public:
@@ -14,3 +16,4 @@ class bin_io {
     void write_vector_bin();
 
 };
+#endif //BIN_IO_H

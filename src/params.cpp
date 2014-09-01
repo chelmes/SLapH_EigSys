@@ -32,7 +32,7 @@ int main () {
   calculation.save();
   std::string name;
   name = parameters -> get_path("res");
- std::cout << nav3d -> get_up(2,0) << std::endl;
+  std::cout << nav3d -> get_up(2,0) << std::endl;
   int zahl=123;
   char datei[200];
   sprintf(datei, "%s.%04d", name.c_str(), zahl);
