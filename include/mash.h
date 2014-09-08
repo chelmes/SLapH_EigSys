@@ -16,7 +16,7 @@ class Eigensystem {
     //Getter and setter methods for data
 
   private:
-    timeslice;
+    timeslice gauge_field;
     Eigen::MatrixXcd eig_vectors;
     Eigen::VectorXd eig_values;
     Eigen::VectorXd phases;
