@@ -9,22 +9,18 @@
 #include <vector>
 #include <Eigen/Eigen>
 
-#include "navigation.h"
 #include "variables.h"
 //Class handling Eigensystems
 
 class Eigensystem {
   private:
-  std::vector <double> eig_vals;
-  Eigen::VectorXcd eig_vec;
-  Eigen::Matrix3cd* ts;
-  Eigen::MatrixXcd eig_sys;
-  std::vector <double> phases;
+   
   //Default Constructor for a 24^3 eigensystem with 120 eigenvectors
   Eigensystem () {};
+  Eigensys_dat data;
 
   public:
-
+  void map();
 
   //Constructors
 

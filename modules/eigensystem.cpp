@@ -1,17 +1,21 @@
 
 #include "eigensystem.h"
+#include "mash.h"
 //void constructor.
 
-
+static IO* const params = IO::getInstance();
 Eigensystem::Eigensystem ( IO* params ) {
   //parameters from input
   int dim_vol = params -> get_int("V_TS");
   int dim_eig = params -> get_int("NEV");
 
-  eig_vec.resize(dim_vol);
-  ts = new Eigen::Matrix3cd[dim_vol];
-  eig_sys.resize(dim_vol, dim_eig);
-  phases.resize(dim_eig);
+  Eigensys_dat::data.eig_values.resize(dim_vol);
+  Eigensys_dat::data.eig_vectors.resize(dim_vol, dim_eig);
+  Eigensys_dat::data.phases.resize(dim_eig);
+  timeslice::extent_gen extents;
+  Eigensys_dat::data.gauge_field.resize(extents[dim_vol][4]); 
+
+}
 
 //Prints status of member
 void Eigensystem::status () {
@@ -20,7 +24,7 @@ void Eigensystem::status () {
 }
 
 //Get timeslice in terms of eigen
-void Eigensystem::map(IO* params) {
+void Eigensystem::map() {
 
   //parameters from input file
   int LZ = params -> get_int("LZ");
@@ -48,6 +52,8 @@ void Eigensystem::map(IO* params) {
               int ind_i = z*V_TS/LZ+y*V_TS/(LZ*LY)+x*V_TS/(V3)+
                 mu*V_TS/(V3*NDIR)+a*V_TS/(V3*NDIR*NCOL)
                 +b*V_TS/(V3*NDIR*NCOL*NCOL)+1;
+              //this is one complex valued entry of the original gauge field
+              //timeslice
               std::complex<double> pair(timeslice[ind_r], timeslice[ind_i]);
               //array to be mapped to Eigen Array
               array[3*b+a] = pair;
@@ -57,7 +63,7 @@ void Eigensystem::map(IO* params) {
           Eigen::Map<Eigen::Matrix3cd> dummy(array);
           //spatial index
           int ind = z*L2*L1+y*L1+x;
-          eigen[ind][mu-1] = dummy;
+          Eigensys_dat::data.gauge_field[ind][mu-1] = dummy;
         }
       }
     }

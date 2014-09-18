@@ -1,4 +1,4 @@
-//Header File holding the Eigensystem 
+//Class holding the eigensystem data. Maintained are one timeslice
 #ifndef _MASH_H_
 #define _MASH_H_
 
@@ -7,11 +7,11 @@
 
 typedef boost::multiarray<Eigen::Matrix3cd,2> timeslice;
 
-class Eigensystem {
+class Eigensys_dat {
   public:
     //Default constructor and destructor
-    Eigensystem();
-    ~Eigensystem();
+    Eigensys_dat();
+    ~Eigensys_dat();
 
     //Getter and setter methods for data
 
@@ -20,8 +20,6 @@ class Eigensystem {
     Eigen::MatrixXcd eig_vectors;
     Eigen::VectorXd eig_values;
     Eigen::VectorXd phases;
-    
-    void map(GaugeField* config);
-    
+
 }
 #endif //_MASH_H_
