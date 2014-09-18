@@ -1,6 +1,6 @@
-/*****************************************
- * Testing IO of parameters with struct and infile
- * Compile with: g++ -Wall -pedantic -I../include/ -L../module  -o params params.cpp
+/****************************************
+ * Programm for the eigensystem calculation needed for SLapH method
+ * copyright: still under development
  * Author: Christopher Helmes
  * **************************************/
 
@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <string>
 
+#include "malt.h"
 #include "navigation.h"
 #include "par_io.h"
 
