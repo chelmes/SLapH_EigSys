@@ -9,15 +9,11 @@
 #include <vector>
 #include <Eigen/Eigen>
 
+#include "mash.h"
 #include "variables.h"
 //Class handling Eigensystems
 
-class Eigensystem {
-  private:
-   
-  //Default Constructor for a 24^3 eigensystem with 120 eigenvectors
-  Eigensystem () {};
-  Eigensys_dat data;
+class Eigensystem : public Element {
 
   public:
   void map();
@@ -30,6 +26,13 @@ class Eigensystem {
 
   //Get information of instance
   void status();
+
+  private:
+   
+  //Default Constructor for a 24^3 eigensystem with 120 eigenvectors
+  Eigensystem () {};
+  Eigensys_dat data;
+
 };
 
 #endif //_EIGENSYSTEM_H_

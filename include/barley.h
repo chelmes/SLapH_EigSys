@@ -1,11 +1,13 @@
 #ifndef _BARLEY_H_
 #define _BARLEY_H_
-class Element {
+
+typedef std::complex<double> 
+
+class Gaugefield {
 
   public:
-    virtual ~Element();
-    virtual void Accept(EigSysCalc& eigsyscalc) = 0;
-  protected:
-    Element();
-}
+
+  private:
+    
+};
 #endif //_BARLEY_H_

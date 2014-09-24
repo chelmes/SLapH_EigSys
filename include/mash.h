@@ -2,7 +2,7 @@
 #ifndef _MASH_H_
 #define _MASH_H_
 
-#include <boos/multi_array.hpp>
+#include <boost/multi_array.hpp>
 #include <Eigen/Eigen/unsupported>
 
 typedef boost::multiarray<Eigen::Matrix3cd,2> timeslice;
