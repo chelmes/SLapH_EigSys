@@ -22,7 +22,7 @@ int main () {
   //have to know where is what
   Nav* nav3d = Nav::getInstance();
   //initialize data structures like gauge field, timeslice and storage for eigenvalues and phases
-  EigSysCalc calculation;
+  EigsysCalc calculation;
   calculation.init();
   //read the gauge field from file to object gauge field
   //set up the analysis (Map timeslice from gauge field, smear timeslice, setup SLEPC EPS, )
